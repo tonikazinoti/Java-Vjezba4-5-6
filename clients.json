@@ -1,0 +1,22 @@
+[
+	{
+		"firstName": "Toni",
+		"lastName": "Kazinoti",
+		"address": {
+			"street": "Narodnog Preporoda 41",
+			"city": "Kastel Novi",
+			"country": "Croatia",
+			"zipCode": "21216"
+		}
+	},
+	{
+		"firstName": "Michael",
+		"lastName": "Douglas",
+		"address": {
+			"street": "Big Elm 2955",
+			"city": "Kansas City",
+			"country": "USA",
+			"zipCode": "64110"
+		}
+	}
+]

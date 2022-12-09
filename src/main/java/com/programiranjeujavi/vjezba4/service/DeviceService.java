@@ -1,15 +1,15 @@
 package com.programiranjeujavi.vjezba4.service;
 
-import com.programiranjeujavi.vjezba4.repository.DeviceReadingRepository;
-import com.programiranjeujavi.vjezba4.repository.DeviceRepository;
-import lombok.AllArgsConstructor;
+import com.programiranjeujavi.vjezba4.data.DeviceReadingDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 
-@Service
-@AllArgsConstructor
-public class DeviceService {
-    private final DeviceRepository deviceRepository;
-    private final DeviceReadingRepository deviceReadingRepository;
+import java.util.List;
+import java.util.Optional;
 
+public interface DeviceService {
+    ResponseEntity<List<DeviceReadingDto>> getAllReadingByDeviceId(Long deviceId);
+
+    ResponseEntity<DeviceReadingDto> createDeviceReading(Long deviceId, Integer year, Short month);
+
+    ResponseEntity<?> searchDeviceReadings(Long deviceId, Integer year, Optional<Short> month, Optional<Boolean> showTotal);
 }

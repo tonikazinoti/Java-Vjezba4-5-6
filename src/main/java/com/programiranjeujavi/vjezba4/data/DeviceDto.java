@@ -1,6 +1,5 @@
 package com.programiranjeujavi.vjezba4.data;
 
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,10 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddressDto {
+public class DeviceDto {
     private Long id;
-    private String street;
-    private String city;
-    private String country;
-    private String zipCode;
+    private String modelName;
 }

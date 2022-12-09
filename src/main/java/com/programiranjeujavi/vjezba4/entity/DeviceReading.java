@@ -1,7 +1,12 @@
 package com.programiranjeujavi.vjezba4.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.*;
+import org.aspectj.lang.annotation.Before;
+
+import java.time.LocalDate;
 
 @Entity
 @AllArgsConstructor
@@ -15,7 +20,10 @@ public class DeviceReading {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "device_reading_id", nullable = false)
     private Long id;
-    private Integer energyConsumption;
+    private int energyConsumptionKwh;
+    @PastOrPresent
+    @Builder.Default
+    private LocalDate timePeriod = LocalDate.now();
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "device_id", nullable = false)
     private Device device;

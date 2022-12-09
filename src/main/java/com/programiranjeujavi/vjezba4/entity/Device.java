@@ -18,7 +18,7 @@ public class Device {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "device_id", nullable = false)
     private Long id;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String modelName;
     @OneToOne(mappedBy = "device")
     @ToString.Exclude
@@ -26,23 +26,4 @@ public class Device {
     @OneToMany(mappedBy = "device")
     @ToString.Exclude
     private List<DeviceReading> deviceReadings;
-
-    public Integer getEnergyConsumptionThisMonthKwh() {
-        var min = 0;
-        var max = 2000;
-
-        return min + (int)(Math.random() * ((max - min) + 1));
-    }
-
-    public List<Integer> getEnergyConsumptionPerMonthInYearKwh() {
-        var min = 0;
-        var max = 24000;
-
-        var list = new ArrayList<Integer>(12);
-        for (var i = 0; i < 12; i++) {
-            list.set(i, min + (int)(Math.random() * ((max - min) + 1)));
-        }
-
-        return list;
-    }
 }
