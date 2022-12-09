@@ -106,9 +106,13 @@ public class DeviceServiceImpl implements DeviceService {
             var totalEnergyConsumption =
             deviceReadingRepository.findDeviceReadingByDeviceAndTimePeriodBetweenAndSumEnergyConsumption(
                     device, timePeriodStart, timePeriodEnd);
+            if (totalEnergyConsumption == null) {
+                totalEnergyConsumption = 0;
+            }
             var deviceReadingDto = new DeviceReadingSumDto();
             deviceReadingDto.setEnergyConsumptionKwh(totalEnergyConsumption);
-            deviceReadingDto.setTimePeriod(timePeriodEnd);
+            deviceReadingDto.setTimePeriodStart(timePeriodStart);
+            deviceReadingDto.setTimePeriodEnd(timePeriodEnd);
             return ResponseEntity.ok(deviceReadingDto);
         }
 

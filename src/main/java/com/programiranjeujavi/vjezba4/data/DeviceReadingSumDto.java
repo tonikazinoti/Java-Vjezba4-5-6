@@ -13,5 +13,7 @@ import java.time.LocalDate;
 public class DeviceReadingSumDto {
     public int energyConsumptionKwh;
     @JsonFormat(pattern="yyyy-MM")
-    public LocalDate timePeriod;
+    public LocalDate timePeriodStart;
+    @JsonFormat(pattern="yyyy-MM")
+    public LocalDate timePeriodEnd;
 }
