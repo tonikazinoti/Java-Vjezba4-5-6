@@ -1,10 +1,8 @@
 package com.programiranjeujavi.vjezba4.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.PastOrPresent;
 import lombok.*;
-import org.aspectj.lang.annotation.Before;
 
 import java.time.LocalDate;
 

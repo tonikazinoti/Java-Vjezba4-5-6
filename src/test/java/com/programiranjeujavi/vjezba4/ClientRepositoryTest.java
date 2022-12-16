@@ -29,6 +29,16 @@ public class ClientRepositoryTest {
     private AddressRepository addressRepository;
 
     @Test
+    public void testSave() {
+        Client clientToInsert = getClient();
+        clientRepository.save(clientToInsert);
+        Optional<Client> found = clientRepository.findById(clientToInsert.getId());
+        assertThat(found.isPresent()).isTrue();
+        Client clientFound = found.get();
+        assertThat(clientFound.getId()).isEqualTo(clientToInsert.getId());
+    }
+
+    @Test
     public void testFindById() {
         Client employee = getClient();
         clientRepository.save(employee);

@@ -34,8 +34,6 @@ public class AppConfiguration {
                 Type ClientsListType = new TypeToken<List<ClientPostDto>>(){}.getType();
                 List<ClientPostDto> clientsToInsert = gson.fromJson(clientsJson, ClientsListType);
 
-                var modelMapper = new ModelMapper();
-
                 clientsToInsert.forEach(clientDto -> {
                     var address = Address.builder()
                             .street(clientDto.getAddress().getStreet())
@@ -50,7 +48,6 @@ public class AppConfiguration {
                             .build();
                     clientRepository.save(client);
                 });
-
 
             } catch(Exception e) {
                 e.printStackTrace();
