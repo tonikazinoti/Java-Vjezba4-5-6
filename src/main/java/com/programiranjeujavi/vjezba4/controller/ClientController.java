@@ -26,12 +26,14 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createClient(@Valid @RequestBody ClientPostDto clientPostDto, BindingResult bindingResult) {
+    public ResponseEntity<?> createClient(@Valid @RequestBody ClientPostDto clientPostDto,
+                                          BindingResult bindingResult) {
         return clientService.createClient(clientPostDto, bindingResult);
     }
 
     @PostMapping("/{clientId}/device")
-    public ResponseEntity<DeviceDto> createDevice(@PathVariable @NotNull Long clientId, @RequestBody DevicePostDto devicePostDto) {
+    public ResponseEntity<DeviceDto> createDevice(@PathVariable @NotNull Long clientId,
+                                                  @RequestBody DevicePostDto devicePostDto) {
         return clientService.createDevice(clientId, devicePostDto);
     }
 }

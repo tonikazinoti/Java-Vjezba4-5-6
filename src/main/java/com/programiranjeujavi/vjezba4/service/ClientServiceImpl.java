@@ -26,7 +26,7 @@ public class ClientServiceImpl implements ClientService {
     private final ClientRepository clientRepository;
     private final DeviceRepository deviceRepository;
     private final AddressRepository addressRepository;
-    private final ModelMapper modelMapper;
+    private final ModelMapper modelMapper = new ModelMapper();
 
     @Override
     public ResponseEntity<ClientDto> getClientById(Long clientId) {
@@ -65,7 +65,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     @Transactional
-    public ResponseEntity<?> createClient(ClientPostDto clientPostDto, BindingResult bindingResult) {
+    public ResponseEntity<ClientPostDto> createClient(ClientPostDto clientPostDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, bindingResult.toString());
         }
