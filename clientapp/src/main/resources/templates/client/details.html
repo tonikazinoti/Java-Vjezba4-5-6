@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Clients</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <h1>Client Details</h1>
+
+    <h3 th:text="${client.firstName + ' ' + client.lastName + ' (Device: ' + client.device.modelName + ')'}"></h3>
+    <ul> Readings:
+        <li th:each="reading: ${readings}">
+            <span th:text="${reading.energyConsumptionKwh + ' kWh (' + reading.timePeriod + ')'}"></span>
+        </li>
+    </ul>
+
+    <div th:with="currentPage=${param.page != null ? #conversions.convert(param.page, 'Integer') : 1}">
+        <form method="get" th:if="${currentPage > 1}">
+            <input th:value="${currentPage - 1}" name="page" type="hidden">
+            <input type="submit" value="<< Previous Page">
+        </form>
+        <form method="get">
+            <input th:value="${currentPage + 1}" name="page" type="hidden">
+            <input type="submit" value="Next Page >>">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

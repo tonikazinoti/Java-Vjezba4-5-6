@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Clients</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <h1>Add Device Reading</h1>
+
+    <div>
+        <form action="#" th:action="@{/devices/add-reading}" method="post" th:object="${reading}">
+            <select th:field="*{deviceId}">Device:
+                <option th:each="client: ${clients}" th:value="${client.device.id}" th:text="${client.device.modelName + ' (Owner: ' + client.firstName + ' ' + client.lastName + ')'}"></option>
+            </select>
+            <input type="month" th:field="*{timePeriod}">
+            <div>
+                <ul class="text-red-500">
+                    <li th:each="err : ${#fields.errors('timePeriod')}" th:text="${err}"/>
+                </ul>
+            </div>
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

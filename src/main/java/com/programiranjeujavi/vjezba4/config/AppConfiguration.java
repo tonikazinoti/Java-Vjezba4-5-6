@@ -5,6 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import com.programiranjeujavi.vjezba4.data.ClientPostDto;
 import com.programiranjeujavi.vjezba4.entity.Address;
 import com.programiranjeujavi.vjezba4.entity.Client;
+import com.programiranjeujavi.vjezba4.entity.Device;
 import com.programiranjeujavi.vjezba4.repository.ClientRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
@@ -41,8 +42,12 @@ public class AppConfiguration {
                             .country(clientDto.getAddress().getCountry())
                             .zipCode(clientDto.getAddress().getZipCode())
                             .build();
+                    var device = Device.builder()
+                            .modelName(clientDto.getDevice().getModelName())
+                            .build();
                     var client = Client.builder()
                             .address(address)
+                            .device(device)
                             .firstName(clientDto.getFirstName())
                             .lastName(clientDto.getLastName())
                             .build();

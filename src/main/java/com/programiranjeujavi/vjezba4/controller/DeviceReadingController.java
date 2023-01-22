@@ -2,6 +2,7 @@ package com.programiranjeujavi.vjezba4.controller;
 
 import com.programiranjeujavi.vjezba4.data.DeviceReadingDto;
 import com.programiranjeujavi.vjezba4.data.DeviceReadingUpdateDto;
+import com.programiranjeujavi.vjezba4.exception.BadRequestException;
 import com.programiranjeujavi.vjezba4.service.DeviceReadingService;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,7 @@ public class DeviceReadingController {
     @PutMapping("/{deviceReadingId}")
     ResponseEntity<DeviceReadingDto> updateDeviceReading(@PathVariable @NotNull Long deviceReadingId,
                                                          @RequestBody DeviceReadingUpdateDto deviceReadingUpdateDto,
-                                                         BindingResult bindingResult) {
+                                                         BindingResult bindingResult) throws BadRequestException {
         return deviceReadingService.updateDeviceReading(deviceReadingId, deviceReadingUpdateDto, bindingResult);
     }
 

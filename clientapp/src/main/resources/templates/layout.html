@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title layout:title-pattern="$CONTENT_TITLE | $LAYOUT_TITLE">Power Usage Management</title>
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a th:href="@{/clients}">Clients List</a></li>
+            <li><a th:href="@{/devices/add-reading}">Add Device Reading</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <div class="uk-container uk-container-large">
+            <section layout:fragment="content">
+                <p>This is filled by the content template.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="p-5">
+        <p class="text-center">&copy; 2023 Power Usage Management. All rights reserved.</p>
+    </footer>
+</body>
+</html>

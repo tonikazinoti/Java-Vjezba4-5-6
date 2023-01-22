@@ -1,14 +1,22 @@
 package com.programiranjeujavi.vjezba4.data;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.http.HttpStatusCode;
+import org.springframework.http.HttpStatus;
 
-@Data
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @NoArgsConstructor
-public class ApiError {
-    private HttpStatusCode httpStatus;
-    private String errorMessage;
+@Data
+public
+class ApiError {
+    private HttpStatus status;
+    private String message;
+
+    public ApiError(HttpStatus status) {
+        this.status = status;
+    }
 }

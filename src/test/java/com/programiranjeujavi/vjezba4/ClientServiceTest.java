@@ -4,6 +4,7 @@ import com.programiranjeujavi.vjezba4.data.ClientDto;
 import com.programiranjeujavi.vjezba4.data.ClientPostDto;
 import com.programiranjeujavi.vjezba4.entity.Address;
 import com.programiranjeujavi.vjezba4.entity.Client;
+import com.programiranjeujavi.vjezba4.exception.BadRequestException;
 import com.programiranjeujavi.vjezba4.repository.AddressRepository;
 import com.programiranjeujavi.vjezba4.repository.ClientRepository;
 import com.programiranjeujavi.vjezba4.service.ClientServiceImpl;
@@ -73,7 +74,7 @@ public class ClientServiceTest {
     }
 
     @Test
-    public void givenValidClient_whenCreateClient_thenCreateThatClient(){
+    public void givenValidClient_whenCreateClient_thenCreateThatClient() throws BadRequestException {
         lenient().when(clientRepository.findById(client.getId()))
                 .thenReturn(Optional.empty());
 

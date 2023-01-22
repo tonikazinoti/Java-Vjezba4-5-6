@@ -4,6 +4,7 @@ import com.programiranjeujavi.vjezba4.data.ClientDto;
 import com.programiranjeujavi.vjezba4.data.ClientPostDto;
 import com.programiranjeujavi.vjezba4.data.DeviceDto;
 import com.programiranjeujavi.vjezba4.data.DevicePostDto;
+import com.programiranjeujavi.vjezba4.exception.BadRequestException;
 import com.programiranjeujavi.vjezba4.service.ClientServiceImpl;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -13,12 +14,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/clients")
 public class ClientController {
     private final ClientServiceImpl clientService;
     private final ModelMapper modelMapper = new ModelMapper();
+
+    @GetMapping
+    public ResponseEntity<List<ClientDto>> getAllDevices() {
+        return clientService.getAllClients();
+    }
 
     @GetMapping("/{clientId}")
     public ResponseEntity<ClientDto> getClientById(@PathVariable @NotNull Long clientId) {
@@ -27,7 +35,7 @@ public class ClientController {
 
     @PostMapping
     public ResponseEntity<?> createClient(@Valid @RequestBody ClientPostDto clientPostDto,
-                                          BindingResult bindingResult) {
+                                          BindingResult bindingResult) throws BadRequestException {
         return clientService.createClient(clientPostDto, bindingResult);
     }
 

@@ -7,6 +7,9 @@
 			"city": "Kastel Novi",
 			"country": "Croatia",
 			"zipCode": "21216"
+		},
+		"device": {
+			"modelName": "EM-6000"
 		}
 	},
 	{
@@ -17,6 +20,9 @@
 			"city": "Kansas City",
 			"country": "USA",
 			"zipCode": "64110"
+		},
+		"device": {
+			"modelName": "EM-7000"
 		}
 	}
 ]
